@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.tenaciouspanda.jobstretch.frontend;
 
 /**
@@ -40,6 +41,11 @@ public class DashboardPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(705, 451));
 
         logoutButton.setText("Log Out");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
 
         editUserProfileButton.setText("Edit User Profile");
         editUserProfileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -133,14 +139,17 @@ public class DashboardPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void editUserProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editUserProfileButtonActionPerformed
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_editUserProfileButtonActionPerformed
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void addConnectionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConnectionButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addConnectionButtonActionPerformed
 
+    private void editUserProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editUserProfileButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editUserProfileButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addConnectionButton;
