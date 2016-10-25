@@ -1,4 +1,4 @@
-package dbconn;
+package com.tenaciouspanda.jobstretch.database;
 
 import java.util.ArrayList;
 
