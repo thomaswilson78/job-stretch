@@ -5,6 +5,8 @@
  */
 package com.tenaciouspanda.jobstretch;
 
+import com.tenaciouspanda.jobstretch.frontend.JobStretchFrame;
+import com.tenaciouspanda.jobstretch.frontend.LoginPanel;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
@@ -12,17 +14,13 @@ import javax.swing.JFrame;
  *
  * @author Simon
  */
- public class MainClass {
+ public class JobStretch {
     public static void main(String[] args){  
-        final JFrame frame = new JFrame();
-
-        frame.setMinimumSize(new Dimension(800, 600));
+        JobStretchFrame frame = new JobStretchFrame();
+        frame.setTitle("My First Swing Application");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setMinimumSize(new Dimension(800, 600));
         frame.setVisible(true);
-        MapsPanel mvp = new MapsPanel();
-        frame.add(mvp);
-        mvp.addMarker(47.6, -122.3, "Marker");
-        mvp.addMarker(34.6, -83, "Marker2");
-        mvp.clear();
+        frame.setPanel(new LoginPanel(new Session(), frame));
     }
  }

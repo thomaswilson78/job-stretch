@@ -3,18 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.tenaciouspanda.jobstretch.frontend;
+
+import com.tenaciouspanda.jobstretch.Session;
+import javax.swing.JFrame;
 
 /**
  *
- * @author CassieAlyce
+ * @author Simon
  */
-public class UserProfileWindow extends javax.swing.JFrame {
-
+public class UserProfilePanel extends javax.swing.JPanel {
+    
+    Session session;
+    JobStretchFrame frame;
+    
     /**
-     * Creates new form UserProfileWindow
+     * Creates new form UserProfilePanel
      */
-    public UserProfileWindow() {
+    public UserProfilePanel(Session session, JobStretchFrame frame) {
+        this.session = session;
+        this.frame = frame;
         initComponents();
     }
 
@@ -27,7 +36,6 @@ public class UserProfileWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        addEmploymentHistoryButton = new javax.swing.JPanel();
         userSummaryLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -36,12 +44,12 @@ public class UserProfileWindow extends javax.swing.JFrame {
         avatarPlaceholder = new javax.swing.JLabel();
         changeAvatarButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jList1 = new javax.swing.JList<String>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         employmentStatusLabel = new javax.swing.JLabel();
-        employmentStatusComboBox = new javax.swing.JComboBox<>();
+        employmentStatusComboBox = new javax.swing.JComboBox<String>();
         occupationLabel = new javax.swing.JLabel();
         occupationField = new javax.swing.JTextField();
         companyNameLabel = new javax.swing.JLabel();
@@ -51,12 +59,10 @@ public class UserProfileWindow extends javax.swing.JFrame {
         cityLabel = new javax.swing.JLabel();
         cityField = new javax.swing.JTextField();
         stateLabel = new javax.swing.JLabel();
-        stateComboBox = new javax.swing.JComboBox<>();
+        stateComboBox = new javax.swing.JComboBox<String>();
         zipCodeLabel = new javax.swing.JLabel();
         zipCodeField = new javax.swing.JTextField();
         AddEmploymentHistoryButton = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         userSummaryLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         userSummaryLabel.setText("Summary");
@@ -101,10 +107,10 @@ public class UserProfileWindow extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane2.setViewportView(jList1);
 
@@ -120,7 +126,7 @@ public class UserProfileWindow extends javax.swing.JFrame {
 
         employmentStatusLabel.setText("Employment Status");
 
-        employmentStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employed", "Unemployed" }));
+        employmentStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Employed", "Unemployed" }));
 
         occupationLabel.setText("Occupation");
 
@@ -132,7 +138,7 @@ public class UserProfileWindow extends javax.swing.JFrame {
 
         stateLabel.setText("State");
 
-        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "KY", "AR", "HA" }));
+        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KY", "AR", "HA" }));
 
         zipCodeLabel.setText("Zip Code");
 
@@ -143,39 +149,39 @@ public class UserProfileWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout addEmploymentHistoryButtonLayout = new javax.swing.GroupLayout(addEmploymentHistoryButton);
-        addEmploymentHistoryButton.setLayout(addEmploymentHistoryButtonLayout);
-        addEmploymentHistoryButtonLayout.setHorizontalGroup(
-            addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addEmploymentHistoryButtonLayout.createSequentialGroup()
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(backButton)
                 .addGap(253, 253, 253)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(addEmploymentHistoryButtonLayout.createSequentialGroup()
-                .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(changeAvatarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(addEmploymentHistoryButtonLayout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(avatarPlaceholder, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(addEmploymentHistoryButtonLayout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
                                 .addComponent(jLabel1))))
-                    .addGroup(addEmploymentHistoryButtonLayout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addComponent(userSummaryLabel))
-                    .addGroup(addEmploymentHistoryButtonLayout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(editUserSummary)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addEmploymentHistoryButtonLayout.createSequentialGroup()
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(occupationLabel)
                             .addComponent(employmentStatusLabel)
                             .addComponent(companyNameLabel)
@@ -184,72 +190,72 @@ public class UserProfileWindow extends javax.swing.JFrame {
                             .addComponent(stateLabel)
                             .addComponent(zipCodeLabel))
                         .addGap(28, 28, 28)
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(stateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(streetAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(employmentStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(occupationField)
                                 .addComponent(companyNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(zipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addEmploymentHistoryButtonLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(189, 189, 189))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addEmploymentHistoryButtonLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(AddEmploymentHistoryButton)
                         .addGap(126, 126, 126))))
         );
-        addEmploymentHistoryButtonLayout.setVerticalGroup(
-            addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addEmploymentHistoryButtonLayout.createSequentialGroup()
-                .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addEmploymentHistoryButtonLayout.createSequentialGroup()
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(backButton)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(4, 4, 4)
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(userSummaryLabel)
                             .addComponent(editUserSummary))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(avatarPlaceholder, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addEmploymentHistoryButtonLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addEmploymentHistoryButtonLayout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(employmentStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(employmentStatusLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(occupationLabel)
                             .addComponent(occupationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(companyNameLabel)
                             .addComponent(companyNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(streetAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cityLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(stateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(stateLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(addEmploymentHistoryButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(zipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(zipCodeLabel))
                         .addGap(18, 18, 18)
@@ -257,19 +263,6 @@ public class UserProfileWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(changeAvatarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addEmploymentHistoryButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addEmploymentHistoryButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -288,44 +281,9 @@ public class UserProfileWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AddEmploymentHistoryButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserProfileWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserProfileWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserProfileWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserProfileWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UserProfileWindow().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddEmploymentHistoryButton;
-    private javax.swing.JPanel addEmploymentHistoryButton;
     private javax.swing.JLabel avatarPlaceholder;
     private javax.swing.JButton backButton;
     private javax.swing.JButton changeAvatarButton;
