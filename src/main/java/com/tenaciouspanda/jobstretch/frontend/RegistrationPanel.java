@@ -6,16 +6,23 @@
 
 package com.tenaciouspanda.jobstretch.frontend;
 
+import com.tenaciouspanda.jobstretch.Session;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Simon
  */
 public class RegistrationPanel extends javax.swing.JPanel {
 
+    Session session;
+    JobStretchFrame frame;
+    
     /**
      * Creates new form RegistrationPanel
      */
-    public RegistrationPanel() {
+    public RegistrationPanel(Session session, JFrame frame) {
+        this.session = session;
         initComponents();
     }
 
@@ -210,7 +217,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
+        frame.setPanel(new LoginPanel(session, frame));
     }//GEN-LAST:event_backButtonActionPerformed
 
 

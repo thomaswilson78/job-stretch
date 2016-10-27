@@ -6,6 +6,7 @@
 package com.tenaciouspanda.jobstretch;
 
 import com.tenaciouspanda.jobstretch.frontend.JobStretchFrame;
+import com.tenaciouspanda.jobstretch.frontend.LoginPanel;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
@@ -20,5 +21,6 @@ import javax.swing.JFrame;
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(800, 600));
         frame.setVisible(true);
+        frame.setPanel(new LoginPanel(new Session(), frame));
     }
  }

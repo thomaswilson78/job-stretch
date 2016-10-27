@@ -6,16 +6,23 @@
 
 package com.tenaciouspanda.jobstretch.frontend;
 
+import com.tenaciouspanda.jobstretch.Session;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Simon
  */
 public class LoginPanel extends javax.swing.JPanel {
+    
+    Session session;
+    JobStretchFrame frame;
 
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanel() {
+    public LoginPanel(Session session, JFrame frame) {
+        this.session = session;
         initComponents();
     }
 
@@ -118,11 +125,12 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_passwordInputActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
+        if(session.authenticate(usernameInput.getText(), passwordInput.getText()))
+            frame.setPanel(new DashboardPanel(session, frame));
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        // TODO add your handling code here:
+        frame.setPanel(new RegistrationPanel(session, frame));
     }//GEN-LAST:event_registerButtonActionPerformed
 
 

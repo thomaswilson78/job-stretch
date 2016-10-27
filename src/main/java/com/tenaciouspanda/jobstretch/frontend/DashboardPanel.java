@@ -6,16 +6,23 @@
 
 package com.tenaciouspanda.jobstretch.frontend;
 
+import com.tenaciouspanda.jobstretch.Session;
+import javax.swing.JFrame;
+
 /**
  *
  * @author ekustudent
  */
 public class DashboardPanel extends javax.swing.JPanel {
+    
+    Session session;
+    JobStretchFrame frame;
 
     /**
      * Creates new form DashboardPanel
      */
-    public DashboardPanel() {
+    public DashboardPanel(Session session, JFrame frame) {
+        this.session = session;
         initComponents();
     }
 

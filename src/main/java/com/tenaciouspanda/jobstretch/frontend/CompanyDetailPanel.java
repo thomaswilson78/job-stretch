@@ -6,16 +6,24 @@
 
 package com.tenaciouspanda.jobstretch.frontend;
 
+import com.tenaciouspanda.jobstretch.Session;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Simon
  */
 public class CompanyDetailPanel extends javax.swing.JPanel {
+    
+    Session session;
+    JobStretchFrame frame;
 
     /**
      * Creates new form CompanyDetailForm
+     * @param session
      */
-    public CompanyDetailPanel() {
+    public CompanyDetailPanel(Session session, JFrame frame) {
+        this.session = session;
         initComponents();
     }
 

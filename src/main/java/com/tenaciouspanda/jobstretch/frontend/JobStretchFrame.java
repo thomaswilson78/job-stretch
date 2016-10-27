@@ -7,6 +7,7 @@
 package com.tenaciouspanda.jobstretch.frontend;
 
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 /**
  *
@@ -15,18 +16,18 @@ import javax.swing.JComponent;
 public class JobStretchFrame extends javax.swing.JFrame {
 
     private JComponent curPanel = null;
+
     /**
      * Creates new form JobStretchFrame
      */
     public JobStretchFrame() {
         initComponents();
-        setPanel(new LoginPanel());
     }
     
-    private void setPanel(JComponent componenet){
+    public void setPanel(JPanel panel){
         if(curPanel != null)
             this.remove(curPanel);
-        curPanel = componenet;
+        curPanel = panel;
         this.getContentPane().add(curPanel);
         this.pack();
     }

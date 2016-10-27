@@ -17,7 +17,7 @@ public class DBconnection {
 		return null;
 	}//complete
 	//checks if user has registered an account. If so, will allow the sure to log in (true)
-	private boolean checkLoginCred(String user, String password) {
+	public static boolean checkLoginCred(String user, String password) {
 		boolean valid = false;//returned value
 		Connection conn = setupConnection();
 		PreparedStatement pst = null;
