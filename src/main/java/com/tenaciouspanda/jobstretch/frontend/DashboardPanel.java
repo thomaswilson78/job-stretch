@@ -21,8 +21,9 @@ public class DashboardPanel extends javax.swing.JPanel {
     /**
      * Creates new form DashboardPanel
      */
-    public DashboardPanel(Session session, JFrame frame) {
+    public DashboardPanel(Session session, JobStretchFrame frame) {
         this.session = session;
+        this.frame = frame;
         initComponents();
     }
 

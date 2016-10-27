@@ -21,8 +21,9 @@ public class LoginPanel extends javax.swing.JPanel {
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanel(Session session, JFrame frame) {
+    public LoginPanel(Session session, JobStretchFrame frame) {
         this.session = session;
+        this.frame = frame;
         initComponents();
     }
 

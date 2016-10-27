@@ -21,8 +21,9 @@ public class UserProfilePanel extends javax.swing.JPanel {
     /**
      * Creates new form UserProfilePanel
      */
-    public UserProfilePanel(Session session, JFrame frame) {
+    public UserProfilePanel(Session session, JobStretchFrame frame) {
         this.session = session;
+        this.frame = frame;
         initComponents();
     }
 

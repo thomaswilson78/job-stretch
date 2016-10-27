@@ -21,8 +21,9 @@ public class CompanyProfilePanel extends javax.swing.JPanel {
     /**
      * Creates new form CompanyProfilePanel
      */
-    public CompanyProfilePanel(Session session, JFrame frame) {
+    public CompanyProfilePanel(Session session, JobStretchFrame frame) {
         this.session = session;
+        this.frame = frame;
         initComponents();
     }
 

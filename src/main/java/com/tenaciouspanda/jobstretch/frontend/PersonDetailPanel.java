@@ -21,8 +21,9 @@ public class PersonDetailPanel extends javax.swing.JPanel {
     /**
      * Creates new form PersonDetailPanel
      */
-    public PersonDetailPanel(Session session, JFrame frame) {
+    public PersonDetailPanel(Session session, JobStretchFrame frame) {
         this.session = session;
+        this.frame = frame;
         initComponents();
     }
 

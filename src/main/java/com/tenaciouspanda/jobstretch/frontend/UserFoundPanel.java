@@ -21,8 +21,9 @@ public class UserFoundPanel extends javax.swing.JPanel {
     /**
      * Creates new form UserFoundPanel
      */
-    public UserFoundPanel(Session session, JFrame frame) {
+    public UserFoundPanel(Session session, JobStretchFrame frame) {
         this.session = session;
+        this.frame = frame;
         initComponents();
     }
 

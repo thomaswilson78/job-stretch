@@ -21,8 +21,9 @@ public class RegistrationPanel extends javax.swing.JPanel {
     /**
      * Creates new form RegistrationPanel
      */
-    public RegistrationPanel(Session session, JFrame frame) {
+    public RegistrationPanel(Session session, JobStretchFrame frame) {
         this.session = session;
+        this.frame = frame;
         initComponents();
     }
 

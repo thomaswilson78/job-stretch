@@ -22,8 +22,9 @@ public class CompanyDetailPanel extends javax.swing.JPanel {
      * Creates new form CompanyDetailForm
      * @param session
      */
-    public CompanyDetailPanel(Session session, JFrame frame) {
+    public CompanyDetailPanel(Session session, JobStretchFrame frame) {
         this.session = session;
+        this.frame = frame;
         initComponents();
     }
 
