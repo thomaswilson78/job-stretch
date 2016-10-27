@@ -13,7 +13,7 @@ import javax.swing.JFrame;
  *
  * @author Simon
  */
- public class MainClass {
+ public class JobStretch {
     public static void main(String[] args){  
         JobStretchFrame frame = new JobStretchFrame();
         frame.setTitle("My First Swing Application");
