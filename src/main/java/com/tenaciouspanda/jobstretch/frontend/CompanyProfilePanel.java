@@ -7,7 +7,6 @@
 package com.tenaciouspanda.jobstretch.frontend;
 
 import com.tenaciouspanda.jobstretch.Session;
-import javax.swing.JFrame;
 
 /**
  *
@@ -16,14 +15,16 @@ import javax.swing.JFrame;
 public class CompanyProfilePanel extends javax.swing.JPanel {
     
     Session session;
-    JobStretchFrame frame;
+    ViewManager view;
 
     /**
      * Creates new form CompanyProfilePanel
+     * @param session
+     * @param theView
      */
-    public CompanyProfilePanel(Session session, JobStretchFrame frame) {
+    public CompanyProfilePanel(Session session, ViewManager theView) {
         this.session = session;
-        this.frame = frame;
+        this.view = theView;
         initComponents();
     }
 
@@ -49,16 +50,18 @@ public class CompanyProfilePanel extends javax.swing.JPanel {
         industryLabel = new javax.swing.JLabel();
         foundedLabel = new javax.swing.JLabel();
         locationLabel = new javax.swing.JLabel();
-        industryComboBox = new javax.swing.JComboBox<String>();
+        industryComboBox = new javax.swing.JComboBox<>();
         dateInput = new javax.swing.JTextField();
         addressInput = new javax.swing.JTextField();
         cityField = new javax.swing.JTextField();
-        stateComboBox = new javax.swing.JComboBox<String>();
+        stateComboBox = new javax.swing.JComboBox<>();
         zipCodeInput = new javax.swing.JTextField();
         websiteLabel = new javax.swing.JLabel();
         websiteField = new javax.swing.JTextField();
         editButton1 = new javax.swing.JButton();
         saveButton2 = new javax.swing.JButton();
+
+        setPreferredSize(new java.awt.Dimension(820, 490));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Company Profile");
@@ -109,7 +112,7 @@ public class CompanyProfilePanel extends javax.swing.JPanel {
 
         locationLabel.setText("Location");
 
-        industryComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Automotive", "Finance" }));
+        industryComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Automotive", "Finance" }));
 
         dateInput.setText("00/00/0000");
 
@@ -117,7 +120,7 @@ public class CompanyProfilePanel extends javax.swing.JPanel {
 
         cityField.setText("City");
 
-        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KY", "AR" }));
+        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "KY", "AR" }));
 
         zipCodeInput.setText("Zip Code");
 
@@ -200,38 +203,39 @@ public class CompanyProfilePanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(191, 191, 191)
-                .addComponent(addEmployeeButton)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(saveButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(138, 138, 138)
-                            .addComponent(summaryLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(191, 191, 191)
+                        .addComponent(addEmployeeButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(saveButton1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(138, 138, 138)
+                                    .addComponent(summaryLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(dataLabel)
-                                .addGap(143, 143, 143)
-                                .addComponent(editButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(saveButton2, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(dataLabel)
+                                        .addGap(143, 143, 143)
+                                        .addComponent(editButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(saveButton2, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

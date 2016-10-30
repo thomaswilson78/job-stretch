@@ -7,7 +7,6 @@
 package com.tenaciouspanda.jobstretch.frontend;
 
 import com.tenaciouspanda.jobstretch.Session;
-import javax.swing.JFrame;
 
 /**
  *
@@ -16,14 +15,16 @@ import javax.swing.JFrame;
 public class RegistrationPanel extends javax.swing.JPanel {
 
     Session session;
-    JobStretchFrame frame;
+    ViewManager view;
     
     /**
      * Creates new form RegistrationPanel
+     * @param session
+     * @param theView
      */
-    public RegistrationPanel(Session session, JobStretchFrame frame) {
+    public RegistrationPanel(Session session, ViewManager theView) {
         this.session = session;
-        this.frame = frame;
+        this.view = theView;
         initComponents();
     }
 
@@ -42,7 +43,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
         confirmPasswordLabel = new javax.swing.JLabel();
         firstNameLabel = new javax.swing.JLabel();
         lastNameLabel = new javax.swing.JLabel();
-        employmentStatusComboBox = new javax.swing.JComboBox<String>();
+        employmentStatusComboBox = new javax.swing.JComboBox<>();
         employmentStatusLabel = new javax.swing.JLabel();
         occupationLabel = new javax.swing.JLabel();
         companyNameLabel = new javax.swing.JLabel();
@@ -60,7 +61,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
         companyNameField = new javax.swing.JTextField();
         streetAddressField = new javax.swing.JTextField();
         cityField = new javax.swing.JTextField();
-        stateComboBox = new javax.swing.JComboBox<String>();
+        stateComboBox = new javax.swing.JComboBox<>();
         zipCodeField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
 
@@ -78,7 +79,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
 
         lastNameLabel.setText("Last Name");
 
-        employmentStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Employed", "Unemployed" }));
+        employmentStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employed", "Unemployed" }));
 
         employmentStatusLabel.setText("Employment Status");
 
@@ -96,7 +97,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
 
         registerButton.setText("Register");
 
-        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KY", "AR", "HA" }));
+        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "KY", "AR", "HA" }));
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +118,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
                         .addGap(188, 188, 188)
                         .addComponent(registrationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(176, Short.MAX_VALUE)
+                        .addContainerGap(370, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(employmentStatusLabel)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -218,7 +219,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        frame.setPanel(new LoginPanel(session, frame));
+        
     }//GEN-LAST:event_backButtonActionPerformed
 
 
