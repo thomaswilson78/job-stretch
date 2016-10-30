@@ -5,10 +5,8 @@
  */
 package com.tenaciouspanda.jobstretch;
 
-import com.tenaciouspanda.jobstretch.frontend.JobStretchFrame;
-import com.tenaciouspanda.jobstretch.frontend.LoginPanel;
-import java.awt.Dimension;
-import javax.swing.JFrame;
+import com.tenaciouspanda.jobstretch.frontend.ViewManager;
+
 
 /**
  *
@@ -16,11 +14,7 @@ import javax.swing.JFrame;
  */
  public class JobStretch {
     public static void main(String[] args){  
-        JobStretchFrame frame = new JobStretchFrame();
-        frame.setTitle("My First Swing Application");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(800, 600));
-        frame.setVisible(true);
-        frame.setPanel(new LoginPanel(new Session(), frame));
+        //Do any setup work here
+        ViewManager programViewManager = new ViewManager();
     }
  }
