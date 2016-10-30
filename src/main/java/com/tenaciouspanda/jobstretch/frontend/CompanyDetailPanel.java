@@ -7,7 +7,6 @@
 package com.tenaciouspanda.jobstretch.frontend;
 
 import com.tenaciouspanda.jobstretch.Session;
-import javax.swing.JFrame;
 
 /**
  *
@@ -16,15 +15,16 @@ import javax.swing.JFrame;
 public class CompanyDetailPanel extends javax.swing.JPanel {
     
     Session session;
-    JobStretchFrame frame;
+    ViewManager view;
 
     /**
      * Creates new form CompanyDetailForm
      * @param session
+     * @param theView
      */
-    public CompanyDetailPanel(Session session, JobStretchFrame frame) {
+    public CompanyDetailPanel(Session session, ViewManager theView) {
         this.session = session;
-        this.frame = frame;
+        this.view = theView;
         initComponents();
     }
 
@@ -50,11 +50,11 @@ public class CompanyDetailPanel extends javax.swing.JPanel {
         industryLabel = new javax.swing.JLabel();
         foundedLabel = new javax.swing.JLabel();
         locationLabel = new javax.swing.JLabel();
-        industryComboBox = new javax.swing.JComboBox<String>();
+        industryComboBox = new javax.swing.JComboBox<>();
         dateInput = new javax.swing.JTextField();
         addressInput = new javax.swing.JTextField();
         cityField = new javax.swing.JTextField();
-        stateComboBox = new javax.swing.JComboBox<String>();
+        stateComboBox = new javax.swing.JComboBox<>();
         zipCodeInput = new javax.swing.JTextField();
         websiteLabel = new javax.swing.JLabel();
         websiteField = new javax.swing.JTextField();
@@ -110,7 +110,7 @@ public class CompanyDetailPanel extends javax.swing.JPanel {
 
         locationLabel.setText("Location");
 
-        industryComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Automotive", "Finance" }));
+        industryComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Automotive", "Finance" }));
 
         dateInput.setText("00/00/0000");
 
@@ -118,7 +118,7 @@ public class CompanyDetailPanel extends javax.swing.JPanel {
 
         cityField.setText("City");
 
-        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KY", "AR" }));
+        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "KY", "AR" }));
 
         zipCodeInput.setText("Zip Code");
 

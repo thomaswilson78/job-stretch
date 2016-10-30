@@ -7,7 +7,6 @@
 package com.tenaciouspanda.jobstretch.frontend;
 
 import com.tenaciouspanda.jobstretch.Session;
-import javax.swing.JFrame;
 
 /**
  *
@@ -16,14 +15,15 @@ import javax.swing.JFrame;
 public class UserProfilePanel extends javax.swing.JPanel {
     
     Session session;
-    JobStretchFrame frame;
+    ViewManager view;
     
     /**
      * Creates new form UserProfilePanel
+     * @param session
      */
-    public UserProfilePanel(Session session, JobStretchFrame frame) {
+    public UserProfilePanel(Session session, ViewManager theView) {
         this.session = session;
-        this.frame = frame;
+        this.view = theView;
         initComponents();
     }
 
@@ -44,12 +44,12 @@ public class UserProfilePanel extends javax.swing.JPanel {
         avatarPlaceholder = new javax.swing.JLabel();
         changeAvatarButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<String>();
+        jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         employmentStatusLabel = new javax.swing.JLabel();
-        employmentStatusComboBox = new javax.swing.JComboBox<String>();
+        employmentStatusComboBox = new javax.swing.JComboBox<>();
         occupationLabel = new javax.swing.JLabel();
         occupationField = new javax.swing.JTextField();
         companyNameLabel = new javax.swing.JLabel();
@@ -59,7 +59,7 @@ public class UserProfilePanel extends javax.swing.JPanel {
         cityLabel = new javax.swing.JLabel();
         cityField = new javax.swing.JTextField();
         stateLabel = new javax.swing.JLabel();
-        stateComboBox = new javax.swing.JComboBox<String>();
+        stateComboBox = new javax.swing.JComboBox<>();
         zipCodeLabel = new javax.swing.JLabel();
         zipCodeField = new javax.swing.JTextField();
         AddEmploymentHistoryButton = new javax.swing.JButton();
@@ -107,10 +107,10 @@ public class UserProfilePanel extends javax.swing.JPanel {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane2.setViewportView(jList1);
 
@@ -126,7 +126,7 @@ public class UserProfilePanel extends javax.swing.JPanel {
 
         employmentStatusLabel.setText("Employment Status");
 
-        employmentStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Employed", "Unemployed" }));
+        employmentStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employed", "Unemployed" }));
 
         occupationLabel.setText("Occupation");
 
@@ -138,7 +138,7 @@ public class UserProfilePanel extends javax.swing.JPanel {
 
         stateLabel.setText("State");
 
-        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KY", "AR", "HA" }));
+        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "KY", "AR", "HA" }));
 
         zipCodeLabel.setText("Zip Code");
 
@@ -178,7 +178,7 @@ public class UserProfilePanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(editUserSummary)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

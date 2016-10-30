@@ -7,7 +7,6 @@
 package com.tenaciouspanda.jobstretch.frontend;
 
 import com.tenaciouspanda.jobstretch.Session;
-import javax.swing.JFrame;
 
 /**
  *
@@ -16,14 +15,15 @@ import javax.swing.JFrame;
 public class UserFoundPanel extends javax.swing.JPanel {
 
     Session session;
-    JobStretchFrame frame;
-    
+    ViewManager view;
     /**
      * Creates new form UserFoundPanel
+     * @param session
+     * @param theView
      */
-    public UserFoundPanel(Session session, JobStretchFrame frame) {
+    public UserFoundPanel(Session session, ViewManager theView) {
         this.session = session;
-        this.frame = frame;
+        this.view = theView;
         initComponents();
     }
 
