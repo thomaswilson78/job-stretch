@@ -5,12 +5,12 @@ import java.util.Date;
 
 
 public class DBconnection {
-	
+	private static final String DB_HOST = "192.168.33.10:3306"; //"csc440.cwalelqxfs6f.us-east-1.rds.amazonaws.com:3306";
 	private static Connection setupConnection() {
 		Connection conn = null;
 		try {
 		conn = DriverManager.getConnection
-				("jdbc:mysql://csc440.cwalelqxfs6f.us-east-1.rds.amazonaws.com:3306/csc440", "admin", "ekucsc440project");
+				("jdbc:mysql://" + DB_HOST + "/csc440", "admin", "ekucsc440project");
 		return conn;
 		} catch (Exception e) {System.out.println(e);}
 		
@@ -30,12 +30,13 @@ public class DBconnection {
 			
 			//checks if a result is found for user name and password
 			rs = pst.getResultSet();
-			if(rs.next()) {
+			if(rs != null && rs.next()) {
 				valid = true;
 			}
 		}
 		catch (Exception e) {
 			System.out.println(e);
+                        e.printStackTrace(System.out);
 		}
 		//close out everything
 		finally {
