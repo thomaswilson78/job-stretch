@@ -136,7 +136,8 @@ public class DashboardPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        this.session.logout();
+        this.view.displayView("LoginPanel");
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void addConnectionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConnectionButtonActionPerformed

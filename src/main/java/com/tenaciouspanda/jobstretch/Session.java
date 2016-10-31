@@ -47,4 +47,8 @@ public class Session {
         }
         return false;
     }
+
+    public void logout() {
+        this.uid = null;
+    }
 }
