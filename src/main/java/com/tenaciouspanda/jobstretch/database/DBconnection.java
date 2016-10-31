@@ -5,13 +5,12 @@ import java.util.Date;
 
 
 public class DBconnection {
-	private static final String DB_HOST = "192.168.33.10:3306"; //"csc440.cwalelqxfs6f.us-east-1.rds.amazonaws.com:3306";
     public static int RESULT_OK = 0;
 	private static Connection setupConnection() {
 		Connection conn = null;
 		try {
 		conn = DriverManager.getConnection
-				("jdbc:mysql://" + DB_HOST + "/csc440", "admin", "ekucsc440project");
+				("jdbc:mysql://csc440.cwalelqxfs6f.us-east-1.rds.amazonaws.com:3306/CSC440", "admin", "ekucsc440project");
 		return conn;
 		} catch (Exception e) {System.out.println(e);}
 		
