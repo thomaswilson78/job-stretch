@@ -135,7 +135,7 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        
+        view.displayView("RegistrationPanel");
     }//GEN-LAST:event_registerButtonActionPerformed
 
 

@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class DBconnection {
 	private static final String DB_HOST = "192.168.33.10:3306"; //"csc440.cwalelqxfs6f.us-east-1.rds.amazonaws.com:3306";
+    public static int RESULT_OK = 0;
 	private static Connection setupConnection() {
 		Connection conn = null;
 		try {
@@ -66,7 +67,7 @@ public class DBconnection {
 	//Done
 	
 	//creates account for user
-	private int createAccount(String user, String pass, String fname, String lname, String city, String street, String state, int zip) {
+	public int createAccount(String user, String pass, String fname, String lname, String city, String street, String state, int zip) {
 		int valid = 0;//returned value, 0 means good
 		Connection conn = setupConnection();
 		PreparedStatement pst = null;
@@ -76,7 +77,7 @@ public class DBconnection {
 			pst = conn.prepareStatement(checkExistUN);
 			pst.setString(1, user);
 			rs = pst.getResultSet();
-			if(rs.next()) {
+			if(rs != null && rs.next()) {
 				return 1;//error: username exist
 			}
 			pst.close();
@@ -92,10 +93,11 @@ public class DBconnection {
 			pst.setString(7, state);
 			pst.setInt(8, zip);
 			
-			pst.executeQuery();
+			pst.execute();
 		}
 		catch (Exception e) {
 			System.out.println(e);
+                        e.printStackTrace(System.out);
 			valid = 2;//error: invalid information
 		}
 		//close out everything

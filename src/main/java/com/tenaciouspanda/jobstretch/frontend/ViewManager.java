@@ -19,13 +19,16 @@ public class ViewManager extends JFrame {
 
     public ViewManager() {
         session = new Session();
-        setFrameAttrs();
-        addViews();
-        displayView("LoginPanel");
+        setup();
     }
-    private void setFrameAttrs(){
+    
+    private void setup(){
+        addViews();
         setTitle("Job Stretch");
         setSize(820, 490);
+        displayView("LoginPanel");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
     }
     private void addViews(){
         DashboardPanel dashboard = new DashboardPanel(session, this);
@@ -61,8 +64,6 @@ public class ViewManager extends JFrame {
             @Override
             public void run() {
                 ViewManager frame = new ViewManager();
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setVisible(true);
             }
         });
     }

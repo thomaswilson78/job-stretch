@@ -96,6 +96,11 @@ public class RegistrationPanel extends javax.swing.JPanel {
         zipCodeLabel.setText("Zip Code");
 
         registerButton.setText("Register");
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
+            }
+        });
 
         stateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "KY", "AR", "HA" }));
 
@@ -219,8 +224,19 @@ public class RegistrationPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        
+        view.displayView("LoginPanel");
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        if(!passwordField.getText().equals(confirmPWField.getText())){
+            //bad password
+        }
+        int zipCode = Integer.parseInt(zipCodeField.getText());
+        if(session.register(usernameField.getText(), passwordField.getText(), firstNameField.getText(), lastNameField.getText(), cityField.getText(), streetAddressField.getText(), (String)stateComboBox.getSelectedItem(), zipCode)){
+            view.displayView("LoginPanel");
+        }
+        
+    }//GEN-LAST:event_registerButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
