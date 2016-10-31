@@ -231,9 +231,23 @@ public class RegistrationPanel extends javax.swing.JPanel {
         if(!passwordField.getText().equals(confirmPWField.getText())){
             //bad password
         }
-        int zipCode = Integer.parseInt(zipCodeField.getText());
+        int zipCode;
+        
+        try
+        {
+            zipCode = Integer.parseInt(zipCodeField.getText());
+        } catch(NumberFormatException e)
+        {
+            view.setStatus("Invalid zip Code");
+            return;
+        }
+        
+        view.setStatus("Registering user");
         if(session.register(usernameField.getText(), passwordField.getText(), firstNameField.getText(), lastNameField.getText(), cityField.getText(), streetAddressField.getText(), (String)stateComboBox.getSelectedItem(), zipCode)){
             view.displayView("LoginPanel");
+            view.setStatus("Registered user.");
+        }else{
+            view.setStatus("Unable to register user");
         }
         
     }//GEN-LAST:event_registerButtonActionPerformed

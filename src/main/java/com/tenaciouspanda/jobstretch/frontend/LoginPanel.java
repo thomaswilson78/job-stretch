@@ -128,8 +128,12 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_passwordInputActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        view.setStatus("Authenticating...");
         if(session.authenticate(usernameInput.getText(), passwordInput.getText())){
             view.displayView("DashboardPanel");
+            view.setStatus("Authenticated.");
+        }else{
+            view.setStatus("Error Authenticating. Try different credentials.");
         }
            
     }//GEN-LAST:event_loginButtonActionPerformed

@@ -24,13 +24,12 @@ public class DBconnection {
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
-			String login = "SELECT * FROM userTable WHERE userName=? AND password=?";
+			String login = "SELECT * FROM userTable WHERE userName=? AND pword=?";
 			pst = conn.prepareStatement(login);
 			pst.setString(1, user);
 			pst.setString(2, password);
-			
-			//checks if a result is found for user name and password
-			rs = pst.getResultSet();
+                        
+                        rs = pst.executeQuery();
 			if(rs != null && rs.next()) {
 				valid = true;
 			}

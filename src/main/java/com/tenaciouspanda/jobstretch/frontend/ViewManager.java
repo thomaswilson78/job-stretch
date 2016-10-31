@@ -42,12 +42,17 @@ public class ViewManager extends JFrame {
         cardPanel.add(upp, "UserProfilePanel");
         add(cardPanel);
         displayView("LoginPanel");
+        setStatus("Initialized");
     }
     void displayView(String viewTitle){
         ((CardLayout)cardPanel.getLayout()).show(cardPanel, viewTitle);
         setVisible(true);
         pack();
-    }  
+    }
+    
+    void setStatus(String status){
+        statusbar.setText(status);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,16 +64,20 @@ public class ViewManager extends JFrame {
     private void initComponents() {
 
         cardPanel = new javax.swing.JPanel();
+        statusbar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         cardPanel.setLayout(new java.awt.CardLayout());
         getContentPane().add(cardPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(statusbar, java.awt.BorderLayout.PAGE_END);
+        statusbar.getAccessibleContext().setAccessibleName("Status");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel cardPanel;
+    private javax.swing.JLabel statusbar;
     // End of variables declaration//GEN-END:variables
 }
