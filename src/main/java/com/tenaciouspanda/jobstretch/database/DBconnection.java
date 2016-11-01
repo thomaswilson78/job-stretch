@@ -5,12 +5,12 @@ import java.util.Date;
 
 
 public class DBconnection {
-	
+    public static int RESULT_OK = 0;
 	private static Connection setupConnection() {
 		Connection conn = null;
 		try {
 		conn = DriverManager.getConnection
-				("jdbc:mysql://csc440.cwalelqxfs6f.us-east-1.rds.amazonaws.com:3306/csc440", "admin", "ekucsc440project");
+				("jdbc:mysql://csc440.cwalelqxfs6f.us-east-1.rds.amazonaws.com:3306/CSC440", "admin", "ekucsc440project");
 		return conn;
 		} catch (Exception e) {System.out.println(e);}
 		
@@ -23,19 +23,19 @@ public class DBconnection {
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
-			String login = "SELECT * FROM userTable WHERE userName=? AND password=?";
+			String login = "SELECT * FROM userTable WHERE userName=? AND pword=?";
 			pst = conn.prepareStatement(login);
 			pst.setString(1, user);
 			pst.setString(2, password);
-			
-			//checks if a result is found for user name and password
-			rs = pst.getResultSet();
-			if(rs.next()) {
+                        
+                        rs = pst.executeQuery();
+			if(rs != null && rs.next()) {
 				valid = true;
 			}
 		}
 		catch (Exception e) {
 			System.out.println(e);
+                        e.printStackTrace(System.out);
 		}
 		//close out everything
 		finally {
@@ -65,7 +65,7 @@ public class DBconnection {
 	//Done
 	
 	//creates account for user
-	private int createAccount(String user, String pass, String fname, String lname, String city, String street, String state, int zip) {
+	public int createAccount(String user, String pass, String fname, String lname, String city, String street, String state, int zip) {
 		int valid = 0;//returned value, 0 means good
 		Connection conn = setupConnection();
 		PreparedStatement pst = null;
@@ -75,7 +75,7 @@ public class DBconnection {
 			pst = conn.prepareStatement(checkExistUN);
 			pst.setString(1, user);
 			rs = pst.getResultSet();
-			if(rs.next()) {
+			if(rs != null && rs.next()) {
 				return 1;//error: username exist
 			}
 			pst.close();
@@ -91,10 +91,11 @@ public class DBconnection {
 			pst.setString(7, state);
 			pst.setInt(8, zip);
 			
-			pst.executeQuery();
+			pst.execute();
 		}
 		catch (Exception e) {
 			System.out.println(e);
+                        e.printStackTrace(System.out);
 			valid = 2;//error: invalid information
 		}
 		//close out everything

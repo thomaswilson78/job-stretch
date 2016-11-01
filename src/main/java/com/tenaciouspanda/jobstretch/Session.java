@@ -29,4 +29,26 @@ public class Session {
     public boolean isAuthenticated(){
         return uid == null;
     }
+
+    public boolean register(
+            String user,
+            String pass,
+            String fname,
+            String lname,
+            String city,
+            String street,
+            String state,
+            int zip){
+        int result = dbc.createAccount(
+            user, pass, fname, lname, city, street, state, zip);
+
+        if(result == DBconnection.RESULT_OK){
+            return true;
+        }
+        return false;
+    }
+
+    public void logout() {
+        this.uid = null;
+    }
 }
