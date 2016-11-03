@@ -19,7 +19,7 @@ public class Session {
         dbc = new DBconnection();
     }
     public boolean authenticate(String username, String password){
-        if(DBconnection.checkLoginCred(username, password)){
+        if(dbc.checkLoginCred(username, password)){
             uid = username;
             return true;
         }else {
@@ -41,7 +41,7 @@ public class Session {
             int zip){
         int result = dbc.createAccount(
             user, pass, fname, lname, city, street, state, zip);
-
+        
         if(result == DBconnection.RESULT_OK){
             return true;
         }
