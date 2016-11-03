@@ -1,117 +1,125 @@
 
 package com.tenaciouspanda.jobstretch.database;
-
-import java.util.*;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Date;
 
 public class Connections {
-	DBconnection db = new DBconnection();
-	private int userID;
-	private String userName;
-	private String fname;
-	private String lname;
-	private String street;
-	private String city;
-	private String state;
-	private int zip;
-	private Date startDate;
-	private Date endDate;
-	private String currentEmployment;
-	private String summary;
-	Connections() {
-		userID=0;
-		userName="";
-		fname="";
-		lname="";
-		street="";
-		city="";
-		state="";
-		zip=0;
-		currentEmployment="";
-		summary="";
-	}
-	//set values for this connection object
-	public int getUserID() {
-		return userID;
-	}
-	public void setUserID(int u) {
-		userID = u;
-	}
-	
-	public String getUserName(){
-		return userName;
-	}
-	public void setUserName(String u){
-		userName = u;
-	}
-	
-	public String getFName(){
-		return fname;
-	}
-	public void setFName(String f) {
-		fname = f;
-	}
-	
-	public String getLName(){
-		return lname;
-	}
-	public void setLName(String l) {
-		lname = l;
-	}
-	
-	public String getStreet(){
-		return street;
-	}
-	public void setStreet(String s){
-		street = s;
-	}
-	
-	public String getCity(){
-		return city;
-	}
-	public void setCity(String c) {
-		city = c;
-	}
-	
-	public String getState(){
-		return state;
-	}
-	public void setState(String s) {
-		state = s;
-	}
-	
-	public int getZip(){
-		return zip;
-	}
-	public void setZip(int z) {
-		zip = z;
-	}
-	
-	public Date getStartDate(){
-		return startDate;
-	}
-	public void setStartDate(Date d) {
-		startDate = d;
-	}
-	
-	public Date getEndDate(){
-		return endDate;
-	}
-	public void setEndDate(Date d) {
-		endDate = d;
-	}
-	
-	public String getCurrent(){
-		return currentEmployment;
-	}
-	public void setCurrent(String c) {
-		currentEmployment = c;
-	}
-	
-	public String getSummary(){
-		return summary;
-	}
-	public void setSummary(String s){
-		summary = s;
-	}
+    public String[][] retreiveConnections(Connection conn, int userID) {
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String[][] results = null;
+        try {
+            String stmnt = "SELECT userTable.userID,userName,fname,lname,city,street,state,zip,summary,employed,Xcoord,Ycoord "
+                    + "FROM userTable JOIN connections ON userTable.userID=userConnection "
+                    + "WHERE connections.userID=?";
+            pst = conn.prepareStatement(stmnt);
+            pst.executeQuery();
+            rs = pst.getResultSet();
+            if(rs.next()) {
+                rs.last();
+                results = new String[rs.getRow()][12];
+                rs.beforeFirst();
+            }
+            else {
+                rs.close();
+                pst.close();
+                return null;
+            }
+            int x=0;
+            while(rs.next()) {
+                for(int i=0;i<12;i++)
+                    results[x][i]=rs.getString(i);
+                x++;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        finally {
+            if(rs!=null) {
+               try {
+                   rs.close();
+               } catch (Exception e) {}
+            }
+            if(pst!=null) {
+                try {
+                    pst.close();
+                } catch (Exception e) {}
+            }
+        }
+        return results;
+    }
+    //add connection that does not have an account
+    public void addConnection(Connection conn, int userID, String f, String l, String s, String c, String st, int zip, Date start, Date end, String employer) {
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            String search = "INSERT INTO userTable (userName, firstName, lastName, street, city, state, zip) VALUES (?,?,?,?,?,?,?)";
+            pst = conn.prepareStatement(search);
+            pst.setString(1, f);
+            pst.setString(2, l);
+            pst.setString(3, s);
+            pst.setString(4, c);
+            pst.setString(5, st);
+            pst.setInt(6, zip);
+            pst.execute();
+            pst.close();
+
+            String getNewUserID = "SELECT userID FROM userTable WHERE userName IS NULL";
+            pst = conn.prepareStatement(getNewUserID);
+            pst.execute();
+            rs = pst.getResultSet();
+            rs.last();
+            int newUserID = rs.getInt(0);
+            pst.close();
+
+            String addCon = "INSERT INTO connections VALUES (?,?), VALUES (?,?)";
+            pst = conn.prepareStatement(addCon);
+            pst.setInt(1, userID);
+            pst.setInt(2, newUserID);
+            pst.setInt(3, newUserID);
+            pst.setInt(4, userID);
+            pst.execute();
+        }
+        catch (Exception ex){
+            System.out.println(ex);
+        }		 
+        finally {
+            if(pst!=null) {
+                try {
+                    pst.close();
+                }
+                catch (Exception e) {}
+                pst = null;
+            }
+        }
+    }
+    //add connection for existing user
+    public void addConnection(Connection conn, int userID, int connID) {
+        PreparedStatement pst = null;
+        try {
+            String addCon = "INSERT INTO connections VALUES (?,?), VALUES (?,?)";
+            pst = conn.prepareStatement(addCon);
+            pst.setInt(1, userID);
+            pst.setInt(2, connID);
+            pst.setInt(3, connID);
+            pst.setInt(4, userID);
+            pst.execute();
+        }
+        catch (Exception ex){
+            System.out.println(ex);
+        }		 
+        finally {
+            if(pst!=null) {
+                try {
+                    pst.close();
+                }
+                catch (Exception e) {}
+                pst = null;
+            }
+        }
+    }
 }
