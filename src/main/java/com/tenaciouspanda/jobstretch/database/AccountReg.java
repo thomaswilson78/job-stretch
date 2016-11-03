@@ -48,7 +48,7 @@ public class AccountReg {
                         JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
                 //if yes, returns entire userID
                 if(response == JOptionPane.YES_OPTION)
-                    result = Integer.parseInt(rs.getString("userID"));//returns ID, call claimAccount
+                    result = rs.getInt("userID");//returns ID, call claimAccount
             }
             if(result==0) {
                 String accountSetup = "INSERT INTO userTable (username, pword, fname, lname) VALUES (?,?,?,?)";//username, password, 
