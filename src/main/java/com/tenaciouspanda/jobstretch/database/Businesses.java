@@ -27,7 +27,7 @@ public class Businesses {
             
             while(rs.next()) {
                 for(int i=0;i<4;i++)
-                    results[i]=rs.getString(i+1);
+                    results[i]=rs.getString(i+2);
             }
         }
         catch(Exception e)
