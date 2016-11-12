@@ -51,7 +51,7 @@ public class AccountReg {
                     result = rs.getInt("userID");//returns ID, call claimAccount
             }
             if(result==0) {
-                String accountSetup = "INSERT INTO userTable (username, pword, fname, lname) VALUES (?,?,?,?)";//username, password, 
+                String accountSetup = "INSERT INTO userTable (username, pword, fname, lname) VALUES (?,?,?,?)"; 
                 pst = conn.prepareStatement(accountSetup, PreparedStatement.RETURN_GENERATED_KEYS);
                 pst.setString(1, user);
                 pst.setString(2, pass);
@@ -63,7 +63,7 @@ public class AccountReg {
                 if(rs.next()) {
                     newUserID = rs.getInt(1);
                 }
-                String locationSetup = "INSERT INTO userLocation (userID, city, street, state, zip) VALUES (?,?,?,?,?)";//username, password, 
+                String locationSetup = "INSERT INTO userLocation (userID, city, street, state, zip) VALUES (?,?,?,?,?)";
                 pst = conn.prepareStatement(locationSetup);
                 pst.setInt(1, newUserID);
                 pst.setString(2, city);
@@ -100,7 +100,7 @@ public class AccountReg {
         PreparedStatement pst = null;
         ResultSet rs = null;
         try {
-            String accountSetup = "INSERT INTO userTable (username, pword) VALUES (?,?) WHERE userID=?";//username, password, 
+            String accountSetup = "UPDATE userTable SET username=?, pword=? WHERE userID=?";
             pst = conn.prepareStatement(accountSetup);
             pst.setString(1, username);
             pst.setString(2, password);
