@@ -50,5 +50,6 @@ public class Session {
 
     public void logout() {
         this.currentUser = null;
+        StaticConnection.closeConnection();
     }
 }
