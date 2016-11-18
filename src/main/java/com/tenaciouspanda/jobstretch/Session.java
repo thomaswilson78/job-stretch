@@ -6,28 +6,29 @@
 package com.tenaciouspanda.jobstretch;
 
 import com.tenaciouspanda.jobstretch.database.DBconnection;
+import com.tenaciouspanda.jobstretch.database.User;
+import com.tenaciouspanda.jobstretch.database.Business;
 
 /**
  *
  * @author Simon
  */
 public class Session {
-    protected DBconnection dbc;
-    protected String uid;
+    protected User currentUser;
     
     public Session(){
-        dbc = new DBconnection();
     }
     public boolean authenticate(String username, String password){
-        if(dbc.checkLoginCred(username, password)){
-            uid = username;
+        int returned = DBconnection.checkLoginCred(username, password);
+        if(returned!=DBconnection.RESULT_CONNECTION_FAILED && returned != DBconnection.RESULT_ITEM_EXIST) {
+            DBconnection.setUser(currentUser, returned);
+            DBconnection.setContacts(currentUser);
             return true;
-        }else {
-            return false;
         }
+        return false;
     }
     public boolean isAuthenticated(){
-        return uid == null;
+        return currentUser == null;
     }
 
     public boolean register(
@@ -38,17 +39,16 @@ public class Session {
             String city,
             String street,
             String state,
-            int zip){
-        int result = dbc.createAccount(
-            user, pass, fname, lname, city, street, state, zip);
+            int zip,
+            String occu,
+            String bus,
+            boolean employed){
+        int result = DBconnection.createAccount(user, pass, fname, lname, city, street, state, zip, occu, bus, employed);
         
-        if(result == DBconnection.RESULT_OK){
-            return true;
-        }
-        return false;
+        return (result == DBconnection.RESULT_OK);
     }
 
     public void logout() {
-        this.uid = null;
+        this.currentUser = null;
     }
 }
