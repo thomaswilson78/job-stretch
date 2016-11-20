@@ -232,7 +232,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
             //bad password
         }
         int zipCode;
-        
+        boolean employed = employmentStatusComboBox.getSelectedIndex()==0;
         try
         {
             zipCode = Integer.parseInt(zipCodeField.getText());
@@ -243,7 +243,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
         }
         
         view.setStatus("Registering user");
-        if(session.register(usernameField.getText(), passwordField.getText(), firstNameField.getText(), lastNameField.getText(), cityField.getText(), streetAddressField.getText(), (String)stateComboBox.getSelectedItem(), zipCode)){
+        if(session.register(usernameField.getText(), passwordField.getText(), firstNameField.getText(), lastNameField.getText(), cityField.getText(), streetAddressField.getText(), (String)stateComboBox.getSelectedItem(), zipCode, occupationField.getText(), companyNameField.getText(), employed)){
             view.displayView("LoginPanel");
             view.setStatus("Registered user.");
         }else{
