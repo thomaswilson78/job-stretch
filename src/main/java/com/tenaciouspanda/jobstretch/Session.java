@@ -7,7 +7,7 @@ package com.tenaciouspanda.jobstretch;
 
 import com.tenaciouspanda.jobstretch.database.DBconnection;
 import com.tenaciouspanda.jobstretch.database.User;
-import com.tenaciouspanda.jobstretch.database.Business;
+import com.tenaciouspanda.jobstretch.database.StaticConnection;
 
 /**
  *
