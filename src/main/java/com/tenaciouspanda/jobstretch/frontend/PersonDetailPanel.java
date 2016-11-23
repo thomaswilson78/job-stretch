@@ -171,7 +171,7 @@ public class PersonDetailPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
+        this.view.displayView("Dashboard");
     }//GEN-LAST:event_backButtonActionPerformed
 
 

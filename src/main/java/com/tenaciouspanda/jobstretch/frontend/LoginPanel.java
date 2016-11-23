@@ -76,6 +76,8 @@ public class LoginPanel extends javax.swing.JPanel {
             }
         });
 
+        passwordField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        passwordField.setToolTipText("");
         passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordFieldActionPerformed(evt);
