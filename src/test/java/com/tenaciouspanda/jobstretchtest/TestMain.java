@@ -12,5 +12,7 @@ package com.tenaciouspanda.jobstretchtest;
 public class TestMain {
     public static void main(String[] args) {
         (new GeocoderTester()).testAll();
+        (new SessionTester()).testAll();
+        System.out.println("All tests successful");
     }
 }
