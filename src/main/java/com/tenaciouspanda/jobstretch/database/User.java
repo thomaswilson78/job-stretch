@@ -1,5 +1,5 @@
 //Keep, 
-package dbtest;
+package com.tenaciouspanda.jobstretch.database;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

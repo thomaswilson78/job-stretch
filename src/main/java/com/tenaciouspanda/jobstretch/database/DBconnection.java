@@ -1,12 +1,13 @@
-package dbtest;
+package com.tenaciouspanda.jobstretch.database;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.util.Date;
 
 public class DBconnection {
-    final public int RESULT_EXIST = 1;
-    final public int RESULT_CONNECT_FAILED = 2;
+    final public static int RESULT_OK = 0;
+    final public static int RESULT_EXIST = 1;
+    final public static int RESULT_CONNECT_FAILED = 2;
     /*Account Creation and Authorization*/
     //checks if user has registered an account. If so, will allow the sure to log in. Tested, works.
         public static int checkLoginCred(String user, String password) {
