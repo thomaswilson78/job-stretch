@@ -1,5 +1,5 @@
 //Keep, create variables and functions to keep,retrieve data
-package dbtest;
+package com.tenaciouspanda.jobstretch.database;
 
 import java.util.Date;
 import java.text.DateFormat;
