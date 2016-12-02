@@ -8,7 +8,7 @@ package com.tenaciouspanda.jobstretch;
 import com.tenaciouspanda.jobstretch.database.DBconnection;
 import com.tenaciouspanda.jobstretch.database.User;
 import com.tenaciouspanda.jobstretch.database.Business;
-
+import com.tenaciouspanda.jobstretch.database.StaticConnection;
 /**
  *
  * @author Simon
@@ -20,7 +20,7 @@ public class Session {
     }
     public boolean authenticate(String username, String password){
         int returned = DBconnection.checkLoginCred(username, password);
-        if(returned!=DBconnection.RESULT_CONNECTION_FAILED && returned != DBconnection.RESULT_ITEM_EXIST) {
+        if(returned!=DBconnection.RESULT_EXIST && returned != DBconnection.RESULT_CONNECT_FAILED) {
             DBconnection.setUser(currentUser, returned);
             DBconnection.setContacts(currentUser);
             return true;
