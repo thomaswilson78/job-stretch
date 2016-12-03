@@ -1,9 +1,8 @@
-//Keep, create variables and functions to keep,retrieve data
 package com.tenaciouspanda.jobstretch.database;
-
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class Business {
     private String busName;
@@ -11,12 +10,12 @@ public class Business {
     private String busWebsite;
     private String busSummary;
     private Date busFounded;
-    private String[] busLocations;
+    private ArrayList busLocations = new ArrayList();
     Business(String n) {
         busName = n;
         DBconnection.getBusiness(this);
     }
-    public void updateBus(String n, String i, String w, String s, Date f, String[] l) {
+    public void updateBus(String n, String i, String w, String s, Date f, ArrayList l) {
         busName = n;
         busIndustry = i;
         busWebsite = w;
@@ -26,7 +25,7 @@ public class Business {
         //DBconnection.updateBusiness(n,i,w,s,f,l);
     }
     //this update function handles date founded as a String and converts it into a Date variable.
-    public void updateBus(String n, String i, String w, String s, String f, String[] l) {
+    public void updateBus(String n, String i, String w, String s, String f, ArrayList l) {
         busName = n;
         busSummary = s;
         busIndustry = i;
@@ -44,27 +43,35 @@ public class Business {
         return busName;
     }
     public String getIndustry() {
-        return busIndustry;
+        if(busIndustry!=null)
+            return busIndustry;
+        return "";
     }
-    public void setIndustry(String i) {
+    protected void setIndustry(String i) {
         busIndustry = i;
     }
     public String getWebsite() {
-        return busWebsite;
+        if(busWebsite!=null)
+            return busWebsite;
+        return "";
     }
-    public void setWebsite(String w) {
+    protected void setWebsite(String w) {
         busWebsite = w;
     }
     public String getSummary () {
-        return busSummary;
+        if(busSummary!=null)
+            return busSummary;
+        return "";
     }
-    public void setSummary(String s) {
+    protected void setSummary(String s) {
         busSummary = s;
     }
     public Date getFounded() {
-        return busFounded;
+        if(busFounded!=null)
+            return busFounded;
+        return new Date();
     }
-    public void setFounded(String s) {
+    protected void setFounded(String s) {
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         try {
             busFounded = df.parse(s);
@@ -72,10 +79,13 @@ public class Business {
             System.out.println(ex.getMessage());
         }
     }
-    public void setFounded(Date d) {
+    protected void setFounded(Date d) {
         busFounded=d;
     }
-    public String[] getLocations() {
+    public ArrayList getLocations() {
         return busLocations;
+    }
+    protected void setLocations(String[] loc) {
+        busLocations.add(loc);
     }
 }

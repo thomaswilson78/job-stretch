@@ -1,16 +1,15 @@
 package com.tenaciouspanda.jobstretch.database;
-
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.util.Date;
 
 public class DBconnection {
-    final public static int RESULT_OK = 0;
-    final public static int RESULT_EXIST = 1;
-    final public static int RESULT_CONNECT_FAILED = 2;
+    final static public int RESULT_OK = 0;
+    final static public int RESULT_EXIST = 1;
+    final static public int RESULT_CONNECT_FAILED = 2;
     /*Account Creation and Authorization*/
     //checks if user has registered an account. If so, will allow the sure to log in. Tested, works.
-        public static int checkLoginCred(String user, String password) {
+    public static int checkLoginCred(String user, String password) {
         if(!StaticConnection.checkConnection())
             StaticConnection.initializeConnection();
         int valid = 0;//returned value
@@ -315,7 +314,7 @@ public class DBconnection {
     
     /*Contacts*/
     //add connection that does not have an account. userID refers to the user who is logged, not contact's userID. Untested.
-    public static boolean addContacts(int userID, String user, String pass, 
+    public static boolean addNonexistantContact(int userID, String user, String pass, 
             String fname, String lname, String city, String street, String state, 
             int zip, String occu, String bus, Date start, Date end, boolean employed) {
         PreparedStatement pst = null;
@@ -445,24 +444,44 @@ public class DBconnection {
         }
         return results;
     }
+    
     /*Business*/
     //pulls information for businesses. Untested.
     public static void getBusiness(Business currentBus) {
         if(!StaticConnection.checkConnection())
             StaticConnection.initializeConnection();
+        String[] location;
         PreparedStatement pst = null;
         ResultSet rs = null;
         try {
-            String getBus = "SELECT industry,founded,website,summary,city,street,state,zip,lat,lon\n" +
-                "FROM business JOIN businessLocations AS bl ON business.businessName = bl.businessName WHERE business.businessName=?";
+            String getBus = "SELECT industry,founded,website,summary " +
+                "FROM business WHERE business.businessName=?";
             pst = StaticConnection.conn.prepareStatement(getBus);
             pst.setString(0, currentBus.getName());
             pst.execute();
             rs = pst.getResultSet();
+            rs.next();
             currentBus.setIndustry(rs.getString(1));
             currentBus.setFounded(rs.getDate(2));
             currentBus.setSummary(rs.getString(3));
+            currentBus.setWebsite(rs.getString(4));
             
+            String getLoc = "SELECT street,city,state,zip,lat,lon " +
+                "FROM business WHERE business.businessName=?";
+            pst = StaticConnection.conn.prepareStatement(getBus);
+            pst.setString(0, currentBus.getName());
+            pst.execute();
+            rs = pst.getResultSet();
+            rs.last();
+            int max = rs.getRow();
+            rs.beforeFirst();
+            while(rs.next()) {
+                location = new String[max];
+                for(int i=1;i<max;i++) {
+                    location[i] = rs.getString(i);
+                }
+                currentBus.setLocations(location);
+            }
         } catch (Exception ex) {
             
         }
@@ -481,7 +500,6 @@ public class DBconnection {
             }
         }
     }
-    
     //find or add a business and it's location. Untested;
     private static int getLocationID(String busName, String city, String street, String state, int zip) {
         PreparedStatement pst = null;
