@@ -1,14 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.tenaciouspanda.jobstretch.database;
 
+import java.util.ArrayList;
 /**
  *
  * @author Thomas
  */
 public class BusLocations {
+    private String street,city,state;
+    private int locationID,zip;
+    private float lat,lon;
     
+    public BusLocations() {
+        
+    }
+    protected void setLocationID(int lID) {
+        locationID = lID;
+    }
 }

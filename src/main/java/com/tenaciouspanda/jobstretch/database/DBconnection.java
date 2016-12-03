@@ -2,6 +2,7 @@ package com.tenaciouspanda.jobstretch.database;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.util.Date;
+import java.util.ArrayList;
 
 public class DBconnection {
     final static public int RESULT_OK = 0;
@@ -397,34 +398,23 @@ public class DBconnection {
         return true;
     }
     //Retrieving information based on search criteria. Used to display information to user that allows the user to add that person as a contact. Tested, works.
-    public static String[][] searchUser (String fname, String lname) {
+    public static ArrayList<User> searchUser (String fname, String lname) {
         if(!StaticConnection.checkConnection())
             StaticConnection.initializeConnection();
         PreparedStatement pst = null;
         ResultSet rs = null;
-        String[][] results = null;
+        ArrayList<User> results = new ArrayList();
         try {
-            String search = "SELECT uT.userID,userName,fname,lname,businessName,jobTitle,city,state FROM employment AS e " +
-                    "JOIN userTable AS uT ON uT.userID=e.userID " +
-                    "JOIN businessLocations AS bL ON bL.locationID=e.businessInfoID " +
-                    "WHERE fname LIKE ? AND lname LIKE ?";
+            String search = "SELECT userID FROM userTable WHERE fname LIKE '%'||?||'%' AND lname LIKE '%'||?||'%'";
             pst = StaticConnection.conn.prepareStatement(search);
             pst.setString(1, fname);
             pst.setString(2, lname);
             pst.execute();
             rs = pst.getResultSet();
-            rs.last();
-            int max = rs.getRow();
-            results = new String[max][];
-            rs.beforeFirst();
-            for (int a=0;a<max;a++) {
-                rs.next();
-                String[] values = new String[8];
-                for(int i=0;i<8;i++) {
-                    values[i] = rs.getString(i+1);
-                }
-                results[a] = values;
-            }          
+            while(rs.next()){
+                User found = new User(rs.getInt(1));
+                results.add(found);
+            }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
