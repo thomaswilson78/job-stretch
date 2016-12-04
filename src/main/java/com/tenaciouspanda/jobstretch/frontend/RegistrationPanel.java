@@ -43,7 +43,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
         confirmPasswordLabel = new javax.swing.JLabel();
         firstNameLabel = new javax.swing.JLabel();
         lastNameLabel = new javax.swing.JLabel();
-        employmentStatusComboBox = new javax.swing.JComboBox<>();
+        employmentStatusComboBox = new javax.swing.JComboBox<String>();
         employmentStatusLabel = new javax.swing.JLabel();
         occupationLabel = new javax.swing.JLabel();
         companyNameLabel = new javax.swing.JLabel();
@@ -61,7 +61,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
         companyNameField = new javax.swing.JTextField();
         streetAddressField = new javax.swing.JTextField();
         cityField = new javax.swing.JTextField();
-        stateComboBox = new javax.swing.JComboBox<>();
+        stateComboBox = new javax.swing.JComboBox<String>();
         zipCodeField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
 
@@ -79,7 +79,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
 
         lastNameLabel.setText("Last Name");
 
-        employmentStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employed", "Unemployed" }));
+        employmentStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Employed", "Unemployed" }));
 
         employmentStatusLabel.setText("Employment Status");
 
@@ -102,7 +102,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
             }
         });
 
-        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "KY", "AR", "HA" }));
+        stateComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KY", "AR", "HA" }));
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {

@@ -32,18 +32,22 @@ public class Session {
     }
 
     public boolean register(
-            String user,
-            String pass,
-            String fname,
-            String lname,
-            String city,
-            String street,
-            String state,
-            int zip,
-            String occu,
-            String bus,
+            String user, 
+            String pass, 
+            String fname, 
+            String lname, 
+            String city, 
+            String street, 
+            String state, 
+            int zip, 
+            String occu, 
+            String bus, 
+            String sum, 
+            String startDate, 
+            String endDate, 
             boolean employed){
-        int result = DBconnection.createAccount(user, pass, fname, lname, city, street, state, zip, occu, bus, employed);
+        //note: need to add more fields to the registration panel such as start date, end date, and summary fields.
+        int result = DBconnection.createAccount(user, pass, fname, lname, city, street, state, zip, occu, bus, sum, startDate, endDate, employed);
         
         return (result == DBconnection.RESULT_OK);
     }

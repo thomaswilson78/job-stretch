@@ -20,7 +20,7 @@ public class User {
         DBconnection.setUser(this, userID);
     }
     /**
-    * Initializes contact list for the user. Should be used after user logs in.
+    * Initializes contact list for the user. Should be called after user logs in.
     * */
     public void setContacts() {
         DBconnection.setContacts(this);
@@ -56,7 +56,7 @@ public class User {
         summary=sum.trim();
         employed=emp;
         try {
-            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             if(!start.equals(""))
                 startDate = df.parse(start);
             if(!end.equals(""))
@@ -89,12 +89,24 @@ public class User {
     public void addToContactList(User contact) {
         connections.add(contact);
     }
+    public void removeFromContactList(int contactID) {
+        boolean found=false;
+        for (User u : connections) {
+            if(u.getUserID()==contactID) {
+                found=true;
+                connections.remove(u);
+                break;
+            }
+        }
+        if(found)
+            DBconnection.removeContact(userID, contactID);
+    }
     /**
      * Used for adding new contacts to the user's contact list and to the database.
      * @param contact 
      */
     public void addNewContact(User contact) {
-        connections.add(contact);
+        addToContactList(contact);
         DBconnection.addContact(this.userID, contact.getUserID());
     }
     
@@ -279,8 +291,8 @@ public class User {
      * @return 
      */
     public String getEndDateString() {
-        if (startDate!=null)
-            return startDate.toString();
+        if (endDate!=null)
+            return endDate.toString();
         return "";
     }
     /**
