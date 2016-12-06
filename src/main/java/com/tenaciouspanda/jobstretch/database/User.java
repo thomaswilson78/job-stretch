@@ -380,4 +380,9 @@ public class User {
     public ArrayList<User> getContacts() {
         return connections;
     }
+    
+    @Override
+    public String toString(){
+        return String.format("%s %s", fname, lname);
+    }
 }
