@@ -56,4 +56,7 @@ public class Session {
         this.currentUser = null;
         StaticConnection.closeConnection();
     }
+     public void addConnection(User newUser) {
+        DBconnection.addContact(currentUser.getUserID(), newUser.getUserID());
+    }
 }
